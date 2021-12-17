@@ -13,9 +13,11 @@ class LeastSquare {
         fun genereteX(data:){
 
         }
-        fun genereteXEven(data: List<Resume>):List<Int>{
-            val start =Integer (data.size/2) - data.size+1
+        //menghitung apabila jumlah item Y nya genap//
+        fun genereteXEven(jmlData: List<Resume>):List<Int>{
+            val start =Integer (jmlData.size/2) - jmlData.size+1
             var result = mutableListOf<Int>()
+            var i=0
             data.forEach{
                 result.add(start++)
             }
@@ -23,6 +25,6 @@ class LeastSquare {
         fun calculateA (data: List<Resume>):Double{
 
         }
-
+fun
     }
 }
