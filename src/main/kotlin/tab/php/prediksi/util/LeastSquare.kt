@@ -1,30 +1,67 @@
 package tab.php.prediksi.util
 
 import tab.php.prediksi.model.Resume
+import org.springframework.stereotype.Component
 
-@Component
 class LeastSquare {
-    companion object{
-        fun converTglToInt(tgl:String):Int{
-            val result = tgl.substring(0,4)+tgl.substring(5,7)+
-                    tgl.substring(0,10)
+    companion object {
+        fun convertTglToInt(tgl: String): Int {
+            val result = tgl.substring(0, 4) + tgl.substring(5,7) +
+                    tgl.substring(8,10)
             return Integer.parseInt(result)
         }
-        fun genereteX(data:){
 
+        fun calculate(data: List<Resume>) {
+            val a = calculateA(data)
+            val b = calculateB(data)
         }
-        //menghitung apabila jumlah item Y nya genap//
-        fun genereteXEven(jmlData: List<Resume>):List<Int>{
-            val start =Integer (jmlData.size/2) - jmlData.size+1
+
+        fun calculateB(data: List<Resume>): Double {
+            val x = generateX(data)
+            return 0.0;
+        }
+
+        fun generateX(data: List<Resume>): List<Int> {
+            if(data.size % 2 == 0) { // jumlah data genap
+                return generateXEven(data.size)
+            } else { // jumlah data ganjil
+                return generateXOdd(data.size)
+            }
+            return mutableListOf<Int>()
+        }
+
+        fun generateXOdd(jmlData: Int): List<Int> {
+            var start = (jmlData / 2).toInt() - jmlData + 1
             var result = mutableListOf<Int>()
-            var i=0
-            data.forEach{
+            var i = 0
+            while(i++ < jmlData) {
                 result.add(start++)
             }
+            return result
         }
-        fun calculateA (data: List<Resume>):Double{
+
+        fun generateXEven(jmlData: Int): List<Int> {
+            return mutableListOf<Int>()
+        }
+
+        fun calculateA(data: List<Resume>): Double {
+            var nilai = 0.0;
+            data.forEach {
+                nilai += it.nilai
+            }
+            return nilai / data.size
+        }
+        fun calculateXY(data: List<Resume>,x:List<Int>):Double{
+            val result=0.0
+            var i=0
+            x.forEach {
+                result +=(it +data[i++].nilai)
+            }
+            return result
+        }
+        fun calculateX2(){
 
         }
-fun
+
     }
 }
