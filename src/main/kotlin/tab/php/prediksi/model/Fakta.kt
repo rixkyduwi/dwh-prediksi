@@ -6,7 +6,7 @@ class Fakta {
     var id:Int,
     @Column (name='amount')
     var amount:Double,
-    @Column (name='sk_files')
+    @Column (name='sk_fil')
     var sk_files:Int,
     @Column (name='sk_staf')
     var sk_staf:Int,
